@@ -140,8 +140,8 @@ window.loadConfig = function() {
   if (!state.nvidiaApiKey && window.FRIDAY_NVIDIA_API_KEY) {
     state.nvidiaApiKey = window.FRIDAY_NVIDIA_API_KEY;
   }
-  if (!state.mistralApiKey && window.FRIDAY_MISTRAL_API_KEY) {
-    state.mistralApiKey = window.FRIDAY_MISTRAL_API_KEY;
+  if (!state.mistralApiKey) {
+    state.mistralApiKey = window.FRIDAY_MISTRAL_API_KEY || "6optHszjCJL3FmvVsrQwxO32ohMF4n6W";
   }
   return state;
 };

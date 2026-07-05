@@ -1359,7 +1359,7 @@ Snippet: ${res.snippet}\n\n`;
       let errMsg = `HTTP ${response.status}`;
       try {
         const errJson = JSON.parse(errText);
-        errMsg = errJson.error?.message || errJson.error || errMsg;
+        errMsg = errJson.error?.message || errJson.error || errJson.message || errMsg;
       } catch (e) {}
       throw new Error(errMsg);
     }

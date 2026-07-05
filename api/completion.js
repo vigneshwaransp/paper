@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
     if (isMistral) {
       url = "https://api.mistral.ai/v1/chat/completions";
-      apiKey = req.headers['x-mistral-api-key'] || process.env.FRIDAY_MISTRAL_API_KEY || "";
+      apiKey = req.headers['x-mistral-api-key'] || process.env.FRIDAY_MISTRAL_API_KEY || "6optHszjCJL3FmvVsrQwxO32ohMF4n6W";
     }
 
     if (!apiKey) {
