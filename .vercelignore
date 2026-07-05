@@ -1,0 +1,2 @@
+# Ignore Node.js static server on Vercel deployment so it compiles as a static site
+server.js

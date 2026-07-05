@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <!-- Icon symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+
+  <!-- Core Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sketchbook Layout container -->
+  <div class="app-layout">
+    <!-- Spiral Bindings down left and right gutters -->
+    <div class="spiral-binding left" aria-hidden="true"></div>
+    <div class="spiral-binding right" aria-hidden="true"></div>
+    
+    <!-- Header AppBar -->
+    <header class="app-bar">
+      <div class="brand">
+        <span class="material-symbols-outlined brand-icon">draw</span>
+        <div class="brand-text">
+          <h1>Paper <span class="brand-ai-badge">AI</span></h1>
+        </div>
+      </div>
+
+      <nav class="app-bar-actions" aria-label="Main Navigation">
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Chat</a>
+          <a href="settings.html" class="nav-link active">Settings</a>
+          <button class="theme-toggle-btn" aria-label="Toggle Design Theme" onclick="window.toggleStyleTheme()">
+            <span class="material-symbols-outlined">eco</span>
+          </button>
+          <button class="thunder-btn" aria-label="Randomize Palette" onclick="window.randomizePalette()">
+            <span class="material-symbols-outlined">bolt</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Settings Card Container -->
+    <main class="card margin-top-1">
+      <div class="desk-binder-clip" aria-hidden="true" style="top: -12px;"></div>
+      <div class="card-tack" aria-hidden="true"></div>
+
+      <div class="card-header" style="display: flex; gap: 0.75rem; align-items: center; border-bottom: 2px dashed var(--color-pencil); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+        <span class="material-symbols-outlined" style="font-size: 2.25rem; color: var(--color-pen);">tune</span>
+        <div>
+          <h2 class="title-large">Neural Alignment Console</h2>
+          <p class="body-medium text-muted">Tune Paper's speaking parameters and sync your personal bio details.</p>
+        </div>
+      </div>
+
+      <form id="neuralForm" class="flex-column gap-1-5" onsubmit="event.preventDefault();">
+        
+        <!-- Section: Identity -->
+        <fieldset style="border: none;" class="flex-column gap-1">
+          <legend class="section-legend">System Identity</legend>
+          
+          <div class="input-group">
+            <label for="userName" class="input-label">Your Name</label>
+            <div class="wobbly-input-wrapper">
+              <input type="text" id="userName" name="userName" required placeholder="e.g. Tony Stark">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="assistantName" class="input-label">Companion Name</label>
+            <div class="wobbly-input-wrapper">
+              <input type="text" id="assistantName" name="assistantName" required placeholder="e.g. Paper">
+            </div>
+          </div>
+        </fieldset>
+        <!-- Section: Neural Model Core Selector -->
+        <fieldset style="border: none;" class="flex-column gap-1">
+          <legend class="section-legend">Neural Model Alignment</legend>
+          
+          <div class="input-group">
+            <label for="backendModel" class="input-label">Cognitive Backend Model</label>
+            <p class="input-help">Select the LLM model to power your companion's thoughts.</p>
+            <div class="wobbly-input-wrapper">
+              <select id="backendModel" style="width: 100%; border: 3px solid var(--color-pencil); border-radius: var(--wobbly-sm); padding: 0.75rem 1rem; font-family: inherit; font-size: 1.25rem; outline: none; background-color: #ffffff; cursor: pointer;">
+                <option value="google/gemini-2.5-flash">Google Gemini 2.5 Flash (Fastest, 2M context)</option>
+                <option value="mistral-large-latest">Mistral Large (Mistral AI Direct API)</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Section: Tonal sliders -->
+        <fieldset style="border: none;" class="flex-column gap-1">
+          <legend class="section-legend">Linguistic Tuning</legend>
+          
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderWit" class="slider-label">Wit & Humor</label>
+              <span class="slider-value" id="valWit">50%</span>
+            </div>
+            <input type="range" id="sliderWit" class="hand-slider" min="0" max="100" value="50">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderSarcasm" class="slider-label">Sarcasm & Banter</label>
+              <span class="slider-value" id="valSarcasm">30%</span>
+            </div>
+            <input type="range" id="sliderSarcasm" class="hand-slider" min="0" max="100" value="30">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderDetail" class="slider-label">Rigor & Technicality</label>
+              <span class="slider-value" id="valDetail">70%</span>
+            </div>
+            <input type="range" id="sliderDetail" class="hand-slider" min="0" max="100" value="70">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderCreativity" class="slider-label">Creativity & Style</label>
+              <span class="slider-value" id="valCreativity">60%</span>
+            </div>
+            <input type="range" id="sliderCreativity" class="hand-slider" min="0" max="100" value="60">
+          </div>
+        </fieldset>
+
+        <!-- Section: Memories and writing samples -->
+        <fieldset style="border: none;" class="flex-column gap-1">
+          <legend class="section-legend">Bio & Speech Samples</legend>
+          
+          <div class="input-group">
+            <label for="userBio" class="input-label">Bio & Personal Context</label>
+            <p class="input-help">What is your background, profession, favorite topics, and core values?</p>
+            <div class="wobbly-input-wrapper">
+              <textarea id="userBio" rows="3" placeholder="I am a software developer working on clean architectures. I love chess, astrophysics, and clean code. I write things efficiently."></textarea>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="speakingRules" class="input-label">Speech Patterns & Jargon</label>
+            <p class="input-help">Rules for speech (e.g. 'Use words like: optimal, neat, wild. Never say: y'all. Be concise.')</p>
+            <div class="wobbly-input-wrapper">
+              <textarea id="speakingRules" rows="3" placeholder="Be direct and witty. If I make a mistake, gently banter about it. Use technical terms accurately. Avoid excessive corporate fluff."></textarea>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="writingSample" class="input-label">My Writing / Code Sample</label>
+            <p class="input-help">Paste a short paragraph or a snippet of code written by you so she can match your style.</p>
+            <div class="wobbly-input-wrapper">
+              <textarea id="writingSample" rows="4" placeholder="const calculateMetrics = (data) => {
+  return data.filter(item => item.valid).map(item => item.value);
+}; // I prefer simple, declarative code."></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Section: Voice & Speech Synthesis (TTS) -->
+        <fieldset style="border: none;" class="flex-column gap-1">
+          <legend class="section-legend">Voice & Speech Alignment (TTS)</legend>
+          
+          <div class="input-group">
+            <label for="ttsVoice" class="input-label">Companion Vocal Core</label>
+            <p class="input-help">Select Paper's synthesized voice. Female voices are listed first.</p>
+            <div class="wobbly-input-wrapper">
+              <select id="ttsVoice" style="width: 100%; border: 3px solid var(--color-pencil); border-radius: var(--wobbly-sm); padding: 0.75rem 1rem; font-family: inherit; font-size: 1.15rem; outline: none; background-color: #ffffff; cursor: pointer;"></select>
+            </div>
+            <button type="button" id="btnPreviewVoice" class="btn-outlined" style="margin-top: 0.5rem; font-size: 0.95rem; padding: 0.4rem 1rem;">
+              <span class="material-symbols-outlined" style="font-size: 1.1rem; vertical-align: middle;">play_arrow</span>
+              Preview Voice
+            </button>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="ttsRate" class="slider-label">Speech Speed Rate</label>
+              <span class="slider-value" id="valTtsRate">1.0x</span>
+            </div>
+            <input type="range" id="ttsRate" class="hand-slider" min="0.5" max="2" step="0.1" value="1.0">
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem;">
+            <input type="checkbox" id="autoSpeak" style="width: 20px; height: 20px; cursor: pointer; border: 2.5px solid var(--color-pencil); border-radius: 4px; outline: none;">
+            <label for="autoSpeak" style="font-weight: bold; cursor: pointer; font-size: 1.2rem;">Auto-Speak Companion Responses</label>
+          </div>
+        </fieldset>
+
+        <!-- Section: Cloud Vault Sync (Database connection) -->
+        <fieldset style="border: none;" class="flex-column gap-1">
+          <legend class="section-legend">Secure Cloud Vault Sync</legend>
+          <p class="body-medium text-muted" style="margin-bottom: 0.5rem; font-size: 1.05rem;">
+            Paper automatically detected your local database OrgKey. You can synchronize your parameters and chat logs to a secure, private cloud bucket.
+          </p>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button type="button" id="btnCloudBackup" class="btn-filled" style="background-color: var(--color-marker); border-color: var(--color-pencil); color: #ffffff;">
+              <span class="material-symbols-outlined">cloud_upload</span>
+              Backup to Vault
+            </button>
+            <button type="button" id="btnCloudRestore" class="btn-outlined">
+              <span class="material-symbols-outlined">cloud_download</span>
+              Restore from Vault
+            </button>
+          </div>
+          <div id="cloudSyncStatus" style="font-family: 'Kalam', cursive; font-size: 1.15rem; color: var(--color-pencil); margin-top: 0.5rem; display: none; align-items: center; gap: 0.5rem;">
+            <span class="material-symbols-outlined" style="animation: jiggleLoader 1s infinite alternate; color: var(--color-marker);">sync</span>
+            <span id="cloudSyncStatusText">Synchronizing database...</span>
+          </div>
+        </fieldset>
+
+        <!-- Hidden credentials fieldset so it doesn't bother users -->
+        <fieldset style="display: none;">
+          <input type="password" id="apiKey" value="">
+        </fieldset>
+
+        <!-- Settings actions buttons -->
+        <div class="form-actions" style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem; border-top: 2px dashed var(--color-pencil); padding-top: 1.5rem;">
+          <button type="button" id="btnReset" class="btn-outlined">
+            <span class="material-symbols-outlined">restart_alt</span>
+            Reset Factory
+          </button>
+          <button type="button" id="btnSave" class="btn-filled">
+            <span class="material-symbols-outlined">save</span>
+            Save Core Config
+          </button>
+        </div>
+
+      </form>
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Shared & Settings Scripts -->
+  <script src="config.js"></script>
+  <script src="common.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

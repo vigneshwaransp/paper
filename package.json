@@ -1,0 +1,16 @@
+{
+  "name": "friday",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "F.R.I.D.A.Y. Personal AI Companion (Material Design 3)",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "node build.js"
+  },
+  "author": "Antigravity",
+  "license": "MIT",
+  "dependencies": {
+    "postgres": "^3.4.9"
+  }
+}
