@@ -1223,8 +1223,17 @@ Snippet: ${res.snippet}\n\n`;
     const messages = [
       { role: "system", content: systemPrompt }
     ];
+    let hasSeenUserOpenRouter = false;
     chatHistory.forEach(msg => {
       if (msg.text !== prompt) {
+        const role = msg.sender === "user" ? "user" : "assistant";
+        if (role === "user") {
+          hasSeenUserOpenRouter = true;
+        }
+        if (!hasSeenUserOpenRouter) {
+          // Skip leading assistant/companion messages
+          return;
+        }
         const textContent = msg.ocrText ? msg.text + `\n\n[Extracted text from attached image]:\n${msg.ocrText}` : msg.text;
         const content = [{ type: "text", text: textContent }];
         if (msg.image) {
@@ -1236,7 +1245,7 @@ Snippet: ${res.snippet}\n\n`;
           });
         }
         messages.push({
-          role: msg.sender === "user" ? "user" : "assistant",
+          role: role,
           content: content
         });
       }
@@ -1256,7 +1265,7 @@ Snippet: ${res.snippet}\n\n`;
     messages.push({ role: "user", content: currentContent });
 
     body = {
-      model: activeState.backendModel || "google/gemini-2.5-flash",
+      model: activeState.backendModel || "mistral-large-latest",
       messages: messages,
       temperature: Math.max(0.2, activeState.sliderCreativity / 100),
       max_tokens: 2048
@@ -1268,8 +1277,17 @@ Snippet: ${res.snippet}\n\n`;
     };
 
     const contents = [];
+    let hasSeenUserGemini = false;
     chatHistory.forEach(msg => {
       if (msg.text !== prompt) {
+        const role = msg.sender === "user" ? "user" : "model";
+        if (role === "user") {
+          hasSeenUserGemini = true;
+        }
+        if (!hasSeenUserGemini) {
+          // Skip leading model/companion messages to satisfy Gemini API requirements
+          return;
+        }
         const textContent = msg.ocrText ? msg.text + `\n\n[Extracted text from attached image]:\n${msg.ocrText}` : msg.text;
         const parts = [{ text: textContent }];
         if (msg.image) {
@@ -1281,7 +1299,7 @@ Snippet: ${res.snippet}\n\n`;
           });
         }
         contents.push({
-          role: msg.sender === "user" ? "user" : "model",
+          role: role,
           parts: parts
         });
       }
@@ -2204,8 +2222,8 @@ function updateStatusIndicator(syncState = null) {
   const label = document.getElementById("syncStatusLabel");
   if (!chip || !label) return;
 
-  const selectedModel = activeState.backendModel || "google/gemini-2.5-flash";
-  const isFreeModel = !activeState.apiKey || selectedModel.includes(":free") || selectedModel.includes("llama") || selectedModel.includes("qwen") || selectedModel.includes("gemma");
+  const selectedModel = activeState.backendModel || "mistral-large-latest";
+  const isFreeModel = (!selectedModel.includes("mistral") && !activeState.apiKey) || selectedModel.includes(":free") || selectedModel.includes("llama") || selectedModel.includes("qwen") || selectedModel.includes("gemma");
   
   let statusText = "";
   if (isFreeModel) {

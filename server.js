@@ -138,7 +138,7 @@ const server = http.createServer(async (req, res) => {
       try {
         const payload = JSON.parse(bodyText);
         const { messages, model, temperature } = payload;
-        const selectedModel = model || "google/gemini-2.5-flash";
+        const selectedModel = model || "mistral-large-latest";
         const isMistral = selectedModel.includes("mistral");
 
         let url = "https://integrate.api.nvidia.com/v1/chat/completions";

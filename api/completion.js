@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
   try {
     const { messages, model, temperature } = req.body;
-    const selectedModel = model || "google/gemini-2.5-flash";
+    const selectedModel = model || "mistral-large-latest";
     const isMistral = selectedModel.includes("mistral");
 
     let url = "https://integrate.api.nvidia.com/v1/chat/completions";

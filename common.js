@@ -22,7 +22,7 @@ const DEFAULT_CONFIG = {
   ttsRate: 1.0,
   autoSpeak: false,
   userMood: "Neutral",
-  backendModel: "google/gemini-2.5-flash"
+  backendModel: "mistral-large-latest"
 };
 
 // 2. PALETTE THEME MAP (HAND-DRAWN STYLINGS ACCENTS)
@@ -123,6 +123,11 @@ window.loadConfig = function() {
     } catch (e) {
       console.error("Failed to parse config from local storage", e);
     }
+  }
+
+  // Migrate deprecated / failed Gemini default model to Mistral
+  if (state.backendModel === "google/gemini-2.5-flash") {
+    state.backendModel = "mistral-large-latest";
   }
 
   // Pre-populate system key from config.js as a fallback ONLY if not already saved in local storage
@@ -227,9 +232,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const syncChip = document.getElementById("syncStatusChip");
   const syncLabel = document.getElementById("syncStatusLabel");
   if (syncChip && syncLabel) {
-    const hasKey = !!state.apiKey;
+    const selectedModel = state.backendModel || "mistral-large-latest";
+    const isMistral = selectedModel.includes("mistral");
+    const hasKey = isMistral ? !!state.mistralApiKey : !!state.apiKey;
     syncChip.className = `status-chip ${hasKey ? 'online' : 'free-mode'}`;
-    syncLabel.textContent = hasKey ? "Sync: Gemini API" : "Sync: Free AI";
+    syncLabel.textContent = hasKey ? (isMistral ? "Sync: Mistral API" : "Sync: Gemini API") : "Sync: Free AI";
   }
 
   // 4. Dynamically generate 3D wire loops in margins

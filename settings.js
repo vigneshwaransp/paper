@@ -55,7 +55,7 @@ function populateForm() {
   settingsDom.writingSample.value = state.writingSample;
   settingsDom.apiKey.value = state.apiKey || "";
   if (settingsDom.backendModel) {
-    settingsDom.backendModel.value = state.backendModel || "google/gemini-2.5-flash";
+    settingsDom.backendModel.value = state.backendModel || "mistral-large-latest";
   }
   
   // Voice controls
@@ -190,8 +190,11 @@ function saveAlignmentConfig() {
     userBio: settingsDom.userBio.value.trim(),
     speakingRules: settingsDom.speakingRules.value.trim(),
     writingSample: settingsDom.writingSample.value.trim(),
-    apiKey: window.FRIDAY_API_KEY || settingsDom.apiKey.value.trim(),
+    apiKey: settingsDom.apiKey.value.trim() || window.FRIDAY_API_KEY || "",
     themeSeed: currentConfig.themeSeed, // preserve theme seed
+    mistralApiKey: currentConfig.mistralApiKey || "",
+    nvidiaApiKey: currentConfig.nvidiaApiKey || "",
+    dbKey: currentConfig.dbKey || "",
     
     // Voice values
     ttsVoiceURI: settingsDom.ttsVoice.value,
@@ -205,10 +208,12 @@ function saveAlignmentConfig() {
   window.showToast("Cerebral sync saved successfully.", "success");
   
   // Sync status chip in header
-  const hasKey = !!updatedState.apiKey;
+  const selectedModel = updatedState.backendModel || "mistral-large-latest";
+  const isMistral = selectedModel.includes("mistral");
+  const hasKey = isMistral ? !!updatedState.mistralApiKey : !!updatedState.apiKey;
   if (settingsDom.syncStatusChip && settingsDom.syncStatusLabel) {
     settingsDom.syncStatusChip.className = `status-chip ${hasKey ? 'online' : 'free-mode'}`;
-    settingsDom.syncStatusLabel.textContent = hasKey ? "Sync: Gemini API" : "Sync: Free AI";
+    settingsDom.syncStatusLabel.textContent = hasKey ? (isMistral ? "Sync: Mistral API" : "Sync: Gemini API") : "Sync: Free AI";
   }
 }
 
@@ -222,10 +227,10 @@ function resetAlignmentConfig() {
     window.showToast("Factory settings restored.", "info");
 
     // Sync header status chip
-    const hasKey = !!window.FRIDAY_API_KEY;
+    const hasKey = !!window.FRIDAY_MISTRAL_API_KEY;
     if (settingsDom.syncStatusChip && settingsDom.syncStatusLabel) {
       settingsDom.syncStatusChip.className = `status-chip ${hasKey ? 'online' : 'free-mode'}`;
-      settingsDom.syncStatusLabel.textContent = hasKey ? "Sync: Gemini API" : "Sync: Free AI";
+      settingsDom.syncStatusLabel.textContent = hasKey ? "Sync: Mistral API" : "Sync: Free AI";
     }
   }
 }
