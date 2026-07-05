@@ -146,7 +146,7 @@ const server = http.createServer(async (req, res) => {
 
         if (isMistral) {
           url = "https://api.mistral.ai/v1/chat/completions";
-          apiKey = req.headers['x-mistral-api-key'] || process.env.FRIDAY_MISTRAL_API_KEY || "6optHszjCJL3FmvVsrQwxO32ohMF4n6W";
+          apiKey = req.headers['x-mistral-api-key'] || process.env.FRIDAY_MISTRAL_API_KEY || "";
         }
 
         if (!apiKey) {
