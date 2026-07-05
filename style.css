@@ -2847,6 +2847,7 @@ body.theme-botanical .paper-grain {
 .app-layout.workspace-image #responseTuner {
   background-color: #ffffff !important;
   border-color: #111111 !important;
+  color: #111111 !important;
 }
 
 .app-layout.workspace-image .nav-link.active {
