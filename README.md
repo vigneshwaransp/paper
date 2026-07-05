@@ -18,9 +18,8 @@
 ## 🎨 Hero Showcase
 
 <div align="center">
-  <!-- Place holder for Hero Image -->
-  <img src="favicon.png" alt="Paper Logo" width="200" style="border-radius: 12px; margin-bottom: 20px;"/>
-  <h3>A Spacious Fullscreen Creative Workspace with CURATED Specialist Personas</h3>
+  <img src="screenshot.png" alt="Paper AI Dashboard Screenshot" width="800" style="border-radius: 8px; border: 3px solid #06b6d4; box-shadow: 0 8px 32px 0 rgba(0, 131, 143, 0.35); margin-bottom: 20px;"/>
+  <h3>A Spacious Fullscreen Creative Workspace with Curated Specialist Personas</h3>
 </div>
 
 ---

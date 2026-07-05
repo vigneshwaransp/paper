@@ -10,7 +10,8 @@ const filesToCopy = [
   'app.js',
   'settings.js',
   'chat.js',
-  'favicon.png'
+  'favicon.png',
+  'screenshot.png'
 ];
 
 const destDir = 'public';
