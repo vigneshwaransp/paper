@@ -3124,11 +3124,11 @@ body.theme-botanical .paper-grain {
    4. WEB BROWSER/SEARCH EXPLORER WORKSPACE OVERRIDES (workspace-web)
    ========================================================================== */
 .app-layout.workspace-web {
-  --color-paper: rgba(8, 51, 68, 0.8) !important;
-  --color-pencil: #22d3ee !important;
-  --color-pen: #e0f7fa !important;
-  --color-marker: #06b6d4 !important;
-  background: radial-gradient(circle, #083344 0%, #020617 100%) !important;
+  --color-paper: rgba(23, 14, 46, 0.8) !important;
+  --color-pencil: #d8b4fe !important;
+  --color-pen: #f5f3ff !important;
+  --color-marker: #ec4899 !important;
+  background: radial-gradient(circle, #2e1065 0%, #03001e 100%) !important;
 }
 
 .app-layout.workspace-web::before {
@@ -3139,73 +3139,73 @@ body.theme-botanical .paper-grain {
   right: 0 !important;
   bottom: 0 !important;
   background: 
-    linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px) !important;
+    linear-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.08) 1px, transparent 1px) !important;
   background-size: 30px 30px !important;
   pointer-events: none !important;
   z-index: 0 !important;
 }
 
 .app-layout.workspace-web .main-desk-page {
-  background: rgba(8, 51, 68, 0.85) !important;
-  border-color: #06b6d4 !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 131, 143, 0.35) !important;
+  background: rgba(24, 15, 48, 0.85) !important;
+  border-color: #a855f7 !important;
+  box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.35) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  color: #e0f7fa !important;
+  color: #f5f3ff !important;
 }
 
 .app-layout.workspace-web .message.companion .message-bubble {
-  background-color: rgba(6, 182, 212, 0.08) !important;
-  border-color: #06b6d4 !important;
-  color: #e0f7fa !important;
+  background-color: rgba(168, 85, 247, 0.08) !important;
+  border-color: #a855f7 !important;
+  color: #f5f3ff !important;
 }
 
 .app-layout.workspace-web .message.user .message-bubble {
-  background-color: rgba(6, 182, 212, 0.18) !important;
-  border-color: #22d3ee !important;
+  background-color: rgba(168, 85, 247, 0.18) !important;
+  border-color: #d8b4fe !important;
   color: #ffffff !important;
 }
 
 .app-layout.workspace-web .message.user .message-bubble::before {
-  border-color: transparent transparent transparent rgba(6, 182, 212, 0.18) !important;
+  border-color: transparent transparent transparent rgba(168, 85, 247, 0.18) !important;
 }
 
 .app-layout.workspace-web .message.companion .message-bubble::before {
-  border-color: transparent rgba(6, 182, 212, 0.08) transparent transparent !important;
+  border-color: transparent rgba(168, 85, 247, 0.08) transparent transparent !important;
 }
 
 .app-layout.workspace-web .sidebar-agent-btn,
 .app-layout.workspace-web .btn-outlined,
 .app-layout.workspace-web .ocr-dropzone,
 .app-layout.workspace-web .telemetry-widget {
-  background-color: rgba(6, 182, 212, 0.05) !important;
-  border-color: rgba(6, 182, 212, 0.3) !important;
-  color: #e0f7fa !important;
+  background-color: rgba(168, 85, 247, 0.05) !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
+  color: #f5f3ff !important;
 }
 
 .app-layout.workspace-web .sidebar-agent-btn.active {
-  background-color: rgba(6, 182, 212, 0.2) !important;
-  color: #22d3ee !important;
-  border-color: #22d3ee !important;
+  background-color: rgba(168, 85, 247, 0.2) !important;
+  color: #d8b4fe !important;
+  border-color: #d8b4fe !important;
 }
 
 .app-layout.workspace-web .history-item {
-  background-color: rgba(6, 182, 212, 0.05) !important;
-  color: #e0f7fa !important;
-  border-color: rgba(6, 182, 212, 0.25) !important;
+  background-color: rgba(168, 85, 247, 0.05) !important;
+  color: #f5f3ff !important;
+  border-color: rgba(168, 85, 247, 0.25) !important;
 }
 
 .app-layout.workspace-web .history-item.active {
-  background-color: rgba(6, 182, 212, 0.2) !important;
-  color: #22d3ee !important;
-  border-color: #22d3ee !important;
+  background-color: rgba(168, 85, 247, 0.2) !important;
+  color: #d8b4fe !important;
+  border-color: #d8b4fe !important;
 }
 
 .app-layout.workspace-web .chat-history-sidebar,
 .app-layout.workspace-web .chat-utility-sidebar {
-  background-color: rgba(8, 51, 68, 0.6) !important;
-  border-color: rgba(6, 182, 212, 0.25) !important;
+  background-color: rgba(20, 12, 40, 0.6) !important;
+  border-color: rgba(168, 85, 247, 0.25) !important;
 }
 
 .app-layout.workspace-web .app-bar,
@@ -3215,147 +3215,147 @@ body.theme-botanical .paper-grain {
 .app-layout.workspace-web .input-action-btn,
 .app-layout.workspace-web .input-send-btn,
 .app-layout.workspace-web #responseTuner {
-  background-color: rgba(8, 51, 68, 0.6) !important;
-  color: #e0f7fa !important;
-  border-color: #06b6d4 !important;
+  background-color: rgba(20, 12, 40, 0.6) !important;
+  color: #f5f3ff !important;
+  border-color: #a855f7 !important;
 }
 
 .app-layout.workspace-web .nav-link.active {
-  background-color: rgba(6, 182, 212, 0.2) !important;
-  color: #22d3ee !important;
-  border-color: #22d3ee !important;
+  background-color: rgba(168, 85, 247, 0.2) !important;
+  color: #d8b4fe !important;
+  border-color: #d8b4fe !important;
 }
 
 .app-layout.workspace-web .chat-input-unified-container,
 .app-layout.workspace-web #chatInput {
-  background-color: rgba(8, 51, 68, 0.7) !important;
+  background-color: rgba(20, 12, 40, 0.7) !important;
   color: #ffffff !important;
-  border-color: #06b6d4 !important;
+  border-color: #a855f7 !important;
 }
 
 /* --- CRITICAL: Chat container, messages, and header overrides for web workspace --- */
 .app-layout.workspace-web .chat-container,
 .app-layout.workspace-web .chat-messages,
 .app-layout.workspace-web .chat-header {
-  background-color: rgba(8, 51, 68, 0.92) !important;
+  background-color: rgba(20, 12, 40, 0.92) !important;
   background-image:
-    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px) !important;
+    linear-gradient(rgba(168, 85, 247, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.06) 1px, transparent 1px) !important;
   background-size: 30px 30px !important;
-  border-color: #06b6d4 !important;
-  color: #e0f7fa !important;
+  border-color: #a855f7 !important;
+  color: #f5f3ff !important;
 }
 
 .app-layout.workspace-web .chat-input-bar {
-  background-color: rgba(8, 51, 68, 0.95) !important;
-  border-color: #06b6d4 !important;
-  color: #e0f7fa !important;
+  background-color: rgba(20, 12, 40, 0.95) !important;
+  border-color: #a855f7 !important;
+  color: #f5f3ff !important;
 }
 
 .app-layout.workspace-web .chat-input-bar textarea {
-  background-color: rgba(6, 182, 212, 0.08) !important;
+  background-color: rgba(168, 85, 247, 0.08) !important;
   color: #ffffff !important;
-  border-color: rgba(6, 182, 212, 0.4) !important;
+  border-color: rgba(168, 85, 247, 0.4) !important;
 }
 
 .app-layout.workspace-web .chat-input-bar textarea::placeholder {
-  color: rgba(224, 247, 250, 0.45) !important;
+  color: rgba(245, 243, 255, 0.45) !important;
 }
 
 /* Message label */
 .app-layout.workspace-web .message-label {
-  color: #22d3ee !important;
+  color: #d8b4fe !important;
 }
 
 /* Speak button */
 .app-layout.workspace-web .btn-speak {
-  color: #e0f7fa !important;
-  border-color: rgba(6, 182, 212, 0.35) !important;
+  color: #f5f3ff !important;
+  border-color: rgba(168, 85, 247, 0.35) !important;
 }
 .app-layout.workspace-web .btn-speak:hover {
-  background-color: rgba(6, 182, 212, 0.15) !important;
+  background-color: rgba(168, 85, 247, 0.15) !important;
 }
 
 /* Message bubble header */
 .app-layout.workspace-web .message-bubble-header {
-  border-color: rgba(6, 182, 212, 0.2) !important;
+  border-color: rgba(168, 85, 247, 0.2) !important;
 }
 
 /* Binder clip */
 .app-layout.workspace-web .desk-binder-clip {
-  border-color: #06b6d4 !important;
-  background-color: rgba(8, 51, 68, 0.8) !important;
+  border-color: #a855f7 !important;
+  background-color: rgba(20, 12, 40, 0.8) !important;
 }
 
 /* Sources used container border */
 .app-layout.workspace-web .sources-used-container {
-  border-top-color: rgba(6, 182, 212, 0.25) !important;
+  border-top-color: rgba(168, 85, 247, 0.25) !important;
 }
 
 /* Sources header text */
 .app-layout.workspace-web .sources-header {
-  color: #22d3ee !important;
+  color: #d8b4fe !important;
 }
 
 /* Scrollbar for web workspace */
 .app-layout.workspace-web .chat-messages::-webkit-scrollbar-track {
-  background: rgba(8, 51, 68, 0.5) !important;
+  background: rgba(20, 12, 40, 0.5) !important;
 }
 .app-layout.workspace-web .chat-messages::-webkit-scrollbar-thumb {
-  background-color: rgba(6, 182, 212, 0.35) !important;
+  background-color: rgba(168, 85, 247, 0.35) !important;
   border-color: transparent !important;
 }
 
 /* Links inside web workspace messages */
 .app-layout.workspace-web .message-bubble a {
-  color: #22d3ee !important;
+  color: #d8b4fe !important;
 }
 .app-layout.workspace-web .message-bubble a:hover {
-  color: #67e8f9 !important;
+  color: #f3e8ff !important;
 }
 
 /* Code blocks inside web workspace */
 .app-layout.workspace-web .message-bubble pre,
 .app-layout.workspace-web .message-bubble code {
   background-color: rgba(2, 6, 23, 0.6) !important;
-  color: #67e8f9 !important;
-  border-color: rgba(6, 182, 212, 0.3) !important;
+  color: #f3e8ff !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
 }
 
 /* Hover effects */
 .app-layout.workspace-web .sidebar-agent-btn:hover,
 .app-layout.workspace-web .history-item:hover {
-  background-color: rgba(6, 182, 212, 0.1) !important;
+  background-color: rgba(168, 85, 247, 0.1) !important;
 }
 
 /* Source Card Styling Overrides for Web Browser Workspace */
 .app-layout.workspace-web .source-card {
-  background-color: rgba(6, 182, 212, 0.08) !important;
-  border-color: #06b6d4 !important;
-  box-shadow: 2px 2px 0px rgba(6, 182, 212, 0.4) !important;
+  background-color: rgba(168, 85, 247, 0.08) !important;
+  border-color: #a855f7 !important;
+  box-shadow: 2px 2px 0px rgba(168, 85, 247, 0.4) !important;
 }
 .app-layout.workspace-web .source-card:hover {
-  background-color: rgba(6, 182, 212, 0.15) !important;
-  box-shadow: 3px 3px 0px rgba(6, 182, 212, 0.5) !important;
+  background-color: rgba(168, 85, 247, 0.15) !important;
+  box-shadow: 3px 3px 0px rgba(168, 85, 247, 0.5) !important;
 }
 .app-layout.workspace-web .source-card-title {
-  color: #22d3ee !important;
+  color: #d8b4fe !important;
 }
 .app-layout.workspace-web .source-card-domain {
-  color: rgba(224, 247, 250, 0.75) !important;
+  color: rgba(245, 243, 255, 0.75) !important;
 }
 
 /* OCR scanner status text */
 .app-layout.workspace-web .ocr-scanner-status {
-  color: #22d3ee !important;
-  background-color: rgba(6, 182, 212, 0.1) !important;
-  border-color: rgba(6, 182, 212, 0.3) !important;
+  color: #d8b4fe !important;
+  background-color: rgba(168, 85, 247, 0.1) !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
 }
 
 /* Welcome section / empty state */
 .app-layout.workspace-web .chat-welcome,
 .app-layout.workspace-web .empty-state-text {
-  color: #e0f7fa !important;
+  color: #f5f3ff !important;
 }
 
 
