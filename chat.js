@@ -1677,6 +1677,9 @@ window.addEventListener("DOMContentLoaded", () => {
   // Initialize interactive text selection tooltip
   initSelectionTooltip();
   
+  // Initialize sidebar pulse animation
+  initSidebarPulse();
+  
   // Set initial telemetry mood
   const telemetryMood = document.getElementById("telemetryMood");
   if (telemetryMood && activeState.userMood) {
@@ -2337,4 +2340,68 @@ function removeSelectionTooltip() {
     activeSelectionTooltip.remove();
     activeSelectionTooltip = null;
   }
+}
+
+// --------------------------------------------------------------------------
+// SIDEBAR COGNITIVE PULSE VISUALIZER
+// --------------------------------------------------------------------------
+let sidebarPulseAnimationFrame = null;
+function initSidebarPulse() {
+  const canvas = document.getElementById("sidebarPulseCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let frame = 0;
+  
+  function drawPulse() {
+    frame++;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Determine color from current activeAgent
+    let strokeColor = "#6750A4"; // default purple
+    if (activeAgent === "maths") strokeColor = "#005FAF";
+    else if (activeAgent === "physics") strokeColor = "#BA1A1A";
+    else if (activeAgent === "english") strokeColor = "#8B5000";
+    else if (activeAgent === "cs") strokeColor = "#006A6A";
+    else if (activeAgent === "image") strokeColor = "#d97706";
+    else if (activeAgent === "youtube") strokeColor = "#ff0000";
+    else if (activeAgent === "translate") strokeColor = "#15803d";
+    else if (activeAgent === "web") strokeColor = "#d8b4fe";
+    
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    
+    // Check if thinking loader is active
+    const isThinking = !!document.getElementById("fridayScribbleLoader");
+    const loadText = document.getElementById("sidebarLoadVal");
+    if (loadText) {
+      loadText.textContent = isThinking ? "Thinking" : "Idle";
+      loadText.style.color = isThinking ? "var(--color-marker)" : "inherit";
+    }
+    
+    // Draw a hand-drawn wobbly wave
+    const waveCount = isThinking ? 3 : 1.5;
+    const waveSpeed = isThinking ? 0.15 : 0.04;
+    const waveAmplitude = isThinking ? 16 : 6;
+    
+    for (let x = 0; x < canvas.width; x++) {
+      const sinVal = Math.sin(x * (0.05 * waveCount) - (frame * waveSpeed));
+      const wobble = Math.cos(x * 0.1 + frame * 0.05) * 1.5;
+      const y = (canvas.height / 2) + (sinVal * waveAmplitude) + wobble;
+      
+      if (x === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+    ctx.stroke();
+    
+    sidebarPulseAnimationFrame = requestAnimationFrame(drawPulse);
+  }
+  
+  if (sidebarPulseAnimationFrame) {
+    cancelAnimationFrame(sidebarPulseAnimationFrame);
+  }
+  drawPulse();
 }

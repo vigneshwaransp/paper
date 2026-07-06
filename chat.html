@@ -98,9 +98,17 @@
           </button>
         </div>
 
-        <div class="desk-post-it" style="position: relative; margin: 1.5rem auto 0.5rem auto; width: 85%; transform: rotate(-2deg); flex-shrink: 0;">
-          <div class="post-it-pin"></div>
-          💡 <strong>Pro Tip:</strong> Highlight any text inside a message to trigger immediate explanations!
+        <!-- Sidebar Cognitive Pulse Visualizer (Unique Feature) -->
+        <div class="sidebar-telemetry-widget" style="position: relative; margin: 1.5rem auto 0.5rem auto; width: 85%; flex-shrink: 0; padding: 0.75rem; border: 2.2px solid var(--color-pencil); border-radius: var(--wobbly-sm); background-color: var(--color-paper); box-shadow: 2px 2px 0px var(--color-pencil);">
+          <div style="font-family: 'Kalam', cursive; font-size: 0.95rem; font-weight: bold; color: var(--color-pencil); display: flex; align-items: center; gap: 0.35rem; margin-bottom: 0.4rem; border-bottom: 1.5px dashed var(--color-pencil); padding-bottom: 0.2rem;">
+            <span class="material-symbols-outlined" style="font-size: 1.1rem; animation: jiggleLoader 1.5s infinite alternate;">query_stats</span>
+            <span>Cognitive Pulse</span>
+          </div>
+          <canvas id="sidebarPulseCanvas" width="150" height="50" style="width: 100%; height: 50px; background: transparent; display: block;"></canvas>
+          <div style="font-family: 'Kalam', cursive; font-size: 0.8rem; color: var(--color-pencil); margin-top: 0.4rem; display: flex; justify-content: space-between; opacity: 0.8;">
+            <span>Load: <em id="sidebarLoadVal" style="font-style: normal; font-weight: bold;">Idle</em></span>
+            <span>Sync: <em id="sidebarSyncVal" style="font-style: normal; font-weight: bold;">100%</em></span>
+          </div>
         </div>
       </aside>
 
