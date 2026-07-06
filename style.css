@@ -3358,5 +3358,9 @@ body.theme-botanical .paper-grain {
   color: #f5f3ff !important;
 }
 
+.app-layout.workspace-web .mindmap-canvas {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
 
 

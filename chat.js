@@ -342,6 +342,9 @@ function animateMindMap(canvas) {
     } else if (activeAgent === "english") {
       strokeColor = "#5c4033";
       fontName = "Georgia, serif";
+    } else if (activeAgent === "web") {
+      strokeColor = "#d8b4fe";
+      fontName = "Kalam, cursive";
     }
     
     ctx.strokeStyle = strokeColor;
